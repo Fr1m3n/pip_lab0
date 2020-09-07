@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабка по ПИПку</title>
+    <link rel="stylesheet" type="text/css" href="resources/style/header.css">
+</head>
+<body>
+<div class="header">
+    <div>Девятилов Роман Александрович</div>
+    <div>P3212</div>
+    <div>2310</div>
+</div>
+<div class="holder">
+    <div class="grid">
+        <div class="grid-row">
+            <div class="image grid-cell">
+                <img src="resources/image.jpg" alt="Image">
+            </div>
+            <div class="grid-cell">
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+        <div class="grid-row">
+            <div class="input-form grid-cell">
+                <form>
+                    <div class="input-group">
+                        <label for="x-input">X</label>
+                        <input type="text" name="x" id="x-input">
+                    </div>
+                    <div class="input-group">
+                        <label for="y-input">Y</label>
+                        <input type="text" name="y" id="y-input">
+                    </div>
+
+                    <div class="input-group input-radio-group">
+                        <div class="form-radio">
+                            <input id="radio-1" type="radio" name="R" value="1">
+                            <label for="radio-1">1</label>
+                        </div>
+                        <div class="form-radio">
+                            <input id="radio-2" type="radio" name="R" value="1.5">
+                            <label for="radio-2">1.5</label>
+                        </div>
+                        <div class="form-radio">
+                            <input id="radio-3" type="radio" name="R" value="2">
+                            <label for="radio-3">2</label>
+                        </div>
+                        <div class="form-radio">
+                            <input id="radio-4" type="radio" name="R" value="2.5">
+                            <label for="radio-4">2.5</label>
+                        </div>
+                        <div class="form-radio">
+                            <input id="radio-5" type="radio" name="R" value="3">
+                            <label for="radio-5">3</label>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-buttons">
+                        <button id="submit" type="submit">Отправить</button> <br>
+                        <button id="reset">Очистить таблицу</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <div id="result-table" class="grid-row">
+                <?php include "php/table.php?>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="resources/script/index.js"></script>
+</body>
+</html>
