@@ -1,5 +1,7 @@
 let r_group = document.getElementsByClassName("form-radio");
 
+const MAX_DECIMAL_LENGTH = 8;
+
 function $(id) {
     return document.getElementById(id);
 }
@@ -61,27 +63,24 @@ function applyServerResponse(response) {
 }
 
 function checkXInput() {
-    // let xValue = parseFloat($("x-input").value);
-    // if (isNaN(xValue)) {
-    //     console.log("x field isn`t number");
-    //     return false;
-    // }
-    // return xValue >= -3.0 && xValue <= 3.0;
-    if ($("x-input").value.match(/^-?\d+[.,]?\d*$/) != null) {
-        let xValue = parseFloat($("x-input").value);
+    let xField = $("x-input");
+    if (xField.value.match(/^-?\d+[.,]?\d*$/) != null && xField.value.length <= MAX_DECIMAL_LENGTH) {
+        let xValue = parseFloat(xField.value);
         return xValue >= -3.0 && xValue <= 3.0;
     } else {
         return false;
     }
 }
 
+
 function checkYInput() {
     // if (isNaN(yValue)) {
     //     console.log("y field isn`t number");
     //     return false;
     // }
-    if ($("y-input").value.match(/^-?\d+[.,]?\d*$/).length != null) {
-        let yValue = parseFloat($("y-input").value);
+    let yField = $("y-input");
+    if (yField.value.match(/^-?\d+[.,]?\d*$/).length != null && yField.value.length <= MAX_DECIMAL_LENGTH) {
+        let yValue = parseFloat(yField.value);
         return yValue >= -3.0 && yValue <= 3.0;
     } else {
         return false;
