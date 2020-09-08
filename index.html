@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Лабка по ПИПку</title>
     <link rel="stylesheet" type="text/css" href="resources/style/header.css">
+    <link rel="stylesheet" type="text/css" href="resources/style/grid.css">
+    <link rel="stylesheet" type="text/css" href="resources/style/main.css">
 </head>
 <body>
 <div class="header">
@@ -12,18 +14,14 @@
     <div>2310</div>
 </div>
 <div class="holder">
-    <div class="grid">
-        <div class="grid-row">
-            <div class="image grid-cell">
+    <table>
+        <tr class="grid-row">
+            <td class="image grid-cell">
                 <img src="resources/image.jpg" alt="Image">
-            </div>
-            <div class="grid-cell">
-                <canvas id="canvas"></canvas>
-            </div>
-        </div>
-        <div class="grid-row">
-            <div class="input-form grid-cell">
+            </td>
+            <td class="input-form grid-cell">
                 <form>
+
                     <div class="input-group">
                         <label for="x-input">X</label>
                         <input type="text" name="x" id="x-input">
@@ -34,42 +32,63 @@
                     </div>
 
                     <div class="input-group input-radio-group">
-                        <div class="form-radio">
-                            <input id="radio-1" type="radio" name="R" value="1">
-                            <label for="radio-1">1</label>
-                        </div>
-                        <div class="form-radio">
-                            <input id="radio-2" type="radio" name="R" value="1.5">
-                            <label for="radio-2">1.5</label>
-                        </div>
-                        <div class="form-radio">
-                            <input id="radio-3" type="radio" name="R" value="2">
-                            <label for="radio-3">2</label>
-                        </div>
-                        <div class="form-radio">
-                            <input id="radio-4" type="radio" name="R" value="2.5">
-                            <label for="radio-4">2.5</label>
-                        </div>
-                        <div class="form-radio">
-                            <input id="radio-5" type="radio" name="R" value="3">
-                            <label for="radio-5">3</label>
-                        </div>
+                        <table>
+                            <tr>
+                                <td><span>R:</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-radio">
+                                        <input id="radio-1" type="radio" name="R" value="1" checked>
+                                        <label for="radio-1">1</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-radio">
+                                        <input id="radio-2" type="radio" name="R" value="1.5">
+                                        <label for="radio-2">1.5</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-radio">
+                                        <input id="radio-3" type="radio" name="R" value="2">
+                                        <label for="radio-3">2</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-radio">
+                                        <input id="radio-4" type="radio" name="R" value="2.5">
+                                        <label for="radio-4">2.5</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-radio">
+                                        <input id="radio-5" type="radio" name="R" value="3">
+                                        <label for="radio-5">3</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <br>
-                    <br>
+
                     <div class="form-buttons">
-                        <button id="submit" type="submit">Отправить</button> <br>
-                        <button id="reset">Очистить таблицу</button>
+                        <button id="submit" type="submit">Отправить</button>
+                        <button id="reset" class="enabled-button">Очистить таблицу</button>
                     </div>
+                    <div id="error-message" class="result-failed">Некорректные данные</div>
                 </form>
+            </td>
+        </tr>
+        <tr class="grid-row">
+            <td id="result-table" class="grid-row">
 
-            </div>
-
-            <div id="result-table" class="grid-row">
-                <?php include "php/table.php?>
-            </div>
-        </div>
-    </div>
+            </td>
+        </tr>
+    </table>
 </div>
 <script src="resources/script/index.js"></script>
 </body>

@@ -1,5 +1,3 @@
-let x_field = $("x-input");
-let y_field = $("y-input");
 let r_group = document.getElementsByClassName("form-radio");
 
 function $(id) {
@@ -18,8 +16,8 @@ function onFormSubmit(e) {
     }
 
     let formData = new FormData();
-    formData.append("value_x", x_field.value);
-    formData.append("value_y", y_field.value);
+    formData.append("value_x", $("x-input").value);
+    formData.append("value_y", $("y-input").value);
     formData.append("value_r", getRValue());
     xhr.send(formData);
 }
@@ -62,8 +60,55 @@ function applyServerResponse(response) {
     $("result-table").innerHTML = response;
 }
 
+function checkXInput() {
+    // let xValue = parseFloat($("x-input").value);
+    // if (isNaN(xValue)) {
+    //     console.log("x field isn`t number");
+    //     return false;
+    // }
+    // return xValue >= -3.0 && xValue <= 3.0;
+    if ($("x-input").value.match(/^\d+[.,]?\d*$/) != null) {
+        let xValue = parseFloat($("x-input").value);
+        return xValue >= -3.0 && xValue <= 3.0;
+    } else {
+        return false;
+    }
+}
+
+function checkYInput() {
+    // if (isNaN(yValue)) {
+    //     console.log("y field isn`t number");
+    //     return false;
+    // }
+    if ($("y-input").value.match(/^\d+[.,]?\d*$/).length != null) {
+        let yValue = parseFloat($("y-input").value);
+        return yValue >= -3.0 && yValue <= 3.0;
+    } else {
+        return false;
+    }
+
+}
+
+function checkInput() {
+    let submitButton = $("submit");
+    if (checkXInput() && checkYInput()) {
+        submitButton.classList.remove("disabled-button");
+        submitButton.classList.add("enabled-button");
+        submitButton.disabled = false;
+        $("error-message").style.visibility = "hidden";
+    } else {
+        submitButton.classList.remove("enabled-button");
+        submitButton.classList.add("disabled-button");
+        submitButton.disabled = true;
+        $("error-message").style.visibility = "visible";
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     $("submit").addEventListener("click", onFormSubmit);
     $("reset").addEventListener("click", resetTable);
+    $("x-input").addEventListener("input", checkInput);
+    $("y-input").addEventListener("input", checkInput);
     getTable();
+    checkInput();
 });

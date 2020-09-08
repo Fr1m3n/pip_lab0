@@ -57,7 +57,8 @@ function check4($x, $y, $r)
     return $x <= $r && $y >= -$r;
 }
 
-function checkInput($x, $y, $r) {
+function checkInput($x, $y, $r)
+{
     if (!is_numeric($x) || !is_numeric($y) || !is_numeric($r)) {
         return false;
     } else {
@@ -71,27 +72,32 @@ function checkInput($x, $y, $r) {
     return true;
 }
 
-function buildResult($state) {
+function buildResult($state)
+{
     $class = $state ? "result-success" : "result-failed";
-    return "<span class=" . $class . ">" . ($state ? "Успешно" : "Чёт не то") . "</span>";
+    return "<span class=\"result " . $class . "\">" . ($state ? "Успешно" : "Чёт не то") . "</span>";
 }
 
 $currentTime = date("H:i:s");
 $startTime = microtime(true);
 
-if (checkInput($x, $y, $r)) {
-    array_push(
-        $_SESSION['results'],
-        array(
-            $x,
-            $y,
-            $r,
-            buildResult(check($x, $y, $r)),
-            $currentTime,
-            microtime(true) - $startTime
-        )
-    );
-}
+$result = checkInput($x, $y, $r) ?
+    buildResult(check($x, $y, $r)) :
+    "<span class=\"result result-failed\">Некорректные данные</span>";
+
+//if (checkInput($x, $y, $r)) {
+array_push(
+    $_SESSION['results'],
+    array(
+        $x,
+        $y,
+        $r,
+        $result,
+        $currentTime,
+        microtime(true) - $startTime
+    )
+);
+//}
 
 include 'table.php';
 
