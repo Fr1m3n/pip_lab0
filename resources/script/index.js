@@ -67,7 +67,7 @@ function checkXInput() {
     //     return false;
     // }
     // return xValue >= -3.0 && xValue <= 3.0;
-    if ($("x-input").value.match(/^\d+[.,]?\d*$/) != null) {
+    if ($("x-input").value.match(/^-?\d+[.,]?\d*$/) != null) {
         let xValue = parseFloat($("x-input").value);
         return xValue >= -3.0 && xValue <= 3.0;
     } else {
@@ -80,7 +80,7 @@ function checkYInput() {
     //     console.log("y field isn`t number");
     //     return false;
     // }
-    if ($("y-input").value.match(/^\d+[.,]?\d*$/).length != null) {
+    if ($("y-input").value.match(/^-?\d+[.,]?\d*$/).length != null) {
         let yValue = parseFloat($("y-input").value);
         return yValue >= -3.0 && yValue <= 3.0;
     } else {
