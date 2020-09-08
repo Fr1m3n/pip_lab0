@@ -16,8 +16,8 @@ function onFormSubmit(e) {
     }
 
     let formData = new FormData();
-    formData.append("value_x", $("x-input").value);
-    formData.append("value_y", $("y-input").value);
+    formData.append("value_x", $("x-input").value.replace(/,/, "."));
+    formData.append("value_y", $("y-input").value.replace(/,/, "."));
     formData.append("value_r", getRValue());
     xhr.send(formData);
 }
